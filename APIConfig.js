@@ -19,6 +19,7 @@ export class USER_PATH {
   static CHANGE_PW = "/change-pw/";
   static CRAWL_USER = "/crawl-user";
   static USERS_FOLLOW = "/users-follow";
+  static USERS_TO_TAG = "/users-to-tag";
 }
 
 export class POST_PATH {
@@ -29,6 +30,7 @@ export class POST_PATH {
   static LIKE = "/like/";
   static TICK_SURVEY = "/tick-post-survey";
   static CRAWL_POST = "/crawl-post";
+  static GET_ONE = "/get-post";
 }
 
 export class COLLECTION_PATH {
