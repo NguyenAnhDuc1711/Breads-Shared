@@ -8,6 +8,13 @@ export class Constants {
     IMAGE: "image",
     VIDEO: "video",
   };
+  static NOTIFICATION_ACTION = {
+    ALL: "all",
+    FOLLOW: "follow",
+    REPLY: "reply",
+    TAG: "tag",
+    REPOST: "repost",
+  };
 }
 
 export const gif = [

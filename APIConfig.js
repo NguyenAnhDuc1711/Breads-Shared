@@ -20,6 +20,8 @@ export class USER_PATH {
   static CRAWL_USER = "/crawl-user";
   static USERS_FOLLOW = "/users-follow";
   static USERS_TO_TAG = "/users-to-tag";
+  static CONNECT = "/connect";
+  static UPDATE_FR_ONLINE = "/update-fr-onl";
 }
 
 export class POST_PATH {
