@@ -48,5 +48,6 @@ export class NOTIFICATION_PATH {
 
 export class MESSAGE_PATH {
   static CREATE = "/create";
-  static UPDATE = "/update/";
+  static GET = "/get";
+  static DELETE = "/delete";
 }
