@@ -47,6 +47,8 @@ export class NOTIFICATION_PATH {
 }
 
 export class MESSAGE_PATH {
+  static GET_CONVERSATIONS = "/get-conversations";
+  static GET_MESSAGES = "/get-messages";
   static CREATE = "/create";
   static GET = "/get";
   static DELETE = "/delete";
