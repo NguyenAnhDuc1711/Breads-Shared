@@ -8,6 +8,7 @@ export class Route {
 
 export class USER_PATH {
   //User
+  static GET_ALL = "/all"
   static ADMIN = "/admin";
   static PROFILE = "/profile/";
   static USERS_TO_FOLLOW = "/users-to-follow";
@@ -19,6 +20,7 @@ export class USER_PATH {
   static CHANGE_PW = "/change-pw/";
   static CRAWL_USER = "/crawl-user";
   static USERS_FOLLOW = "/users-follow";
+  static USERS_SEARCH = "/users-search"
   static USERS_TO_TAG = "/users-to-tag";
   static CONNECT = "/connect";
   static UPDATE_FR_ONLINE = "/update-fr-onl";
