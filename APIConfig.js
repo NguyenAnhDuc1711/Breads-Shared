@@ -11,7 +11,7 @@ export class USER_PATH {
   static GET_ALL = "/all"
   static ADMIN = "/admin";
   static PROFILE = "/profile/";
-  static USERS_TO_FOLLOW = "/users-to-follow";
+  static USERS_TO_FOLLOW = "/users-to-follow";z
   static SIGN_UP = "/signup";
   static LOGIN = "/login";
   static LOGOUT = "/logout";
@@ -49,6 +49,9 @@ export class NOTIFICATION_PATH {
 }
 
 export class MESSAGE_PATH {
+  static GET_CONVERSATIONS = "/get-conversations";
+  static GET_MESSAGES = "/get-messages";
   static CREATE = "/create";
-  static UPDATE = "/update/";
+  static GET = "/get";
+  static DELETE = "/delete";
 }
