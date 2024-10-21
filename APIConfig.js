@@ -10,7 +10,7 @@ export class USER_PATH {
   //User
   static ADMIN = "/admin";
   static PROFILE = "/profile/";
-  static USERS_TO_FOLLOW = "/users-to-follow";
+  static USERS_TO_FOLLOW = "/users-to-follow";z
   static SIGN_UP = "/signup";
   static LOGIN = "/login";
   static LOGOUT = "/logout";
