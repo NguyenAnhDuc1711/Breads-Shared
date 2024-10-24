@@ -14,7 +14,7 @@ class PageConstant {
     ACCOUNT: "setting/account",
     HELP: "setting/help",
   };
-
+  static USER_REPLIES = "user_replies";
   static FOLLOWING = "following";
   static SAVED = "saved";
   static FOR_YOU = "for_you";
