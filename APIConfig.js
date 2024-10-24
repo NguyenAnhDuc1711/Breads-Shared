@@ -4,6 +4,7 @@ export class Route {
   static COLLECTION = "/collections";
   static NOTIFICATION = "/notifications";
   static MESSAGE = "/messages";
+  static UTIL = "/util";
 }
 
 export class USER_PATH {
@@ -52,4 +53,8 @@ export class MESSAGE_PATH {
   static CREATE = "/create";
   static GET = "/get";
   static DELETE = "/delete";
+}
+
+export class UTIL_PATH {
+  static UPLOAD = "/upload";
 }
