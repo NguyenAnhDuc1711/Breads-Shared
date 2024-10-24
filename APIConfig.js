@@ -9,10 +9,10 @@ export class Route {
 
 export class USER_PATH {
   //User
-  static GET_ALL = "/all"
+  static GET_ALL = "/all";
   static ADMIN = "/admin";
   static PROFILE = "/profile/";
-  static USERS_TO_FOLLOW = "/users-to-follow";z
+  static USERS_TO_FOLLOW = "/users-to-follow";
   static SIGN_UP = "/signup";
   static LOGIN = "/login";
   static LOGOUT = "/logout";
@@ -21,7 +21,7 @@ export class USER_PATH {
   static CHANGE_PW = "/change-pw/";
   static CRAWL_USER = "/crawl-user";
   static USERS_FOLLOW = "/users-follow";
-  static USERS_SEARCH = "/users-search"
+  static USERS_SEARCH = "/users-search";
   static USERS_TO_TAG = "/users-to-tag";
   static CONNECT = "/connect";
   static UPDATE_FR_ONLINE = "/update-fr-onl";
@@ -51,6 +51,7 @@ export class NOTIFICATION_PATH {
 
 export class MESSAGE_PATH {
   static GET_CONVERSATIONS = "/get-conversations";
+  static GET_MESSAGE = "/get-message";
   static GET_MESSAGES = "/get-messages";
   static CREATE = "/create";
   static GET = "/get";
