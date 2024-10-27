@@ -7,6 +7,7 @@ class PageConstant {
   static PROFILE = "profile";
   static ACTIVITY = "activity";
   static USER = "users";
+  static FRIEND = "friend";
   static CHAT = "chat";
   static SETTING = {
     DEFAULT: "setting",
