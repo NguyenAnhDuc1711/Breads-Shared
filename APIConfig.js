@@ -53,6 +53,9 @@ export class MESSAGE_PATH {
   static GET_CONVERSATIONS = "/get-conversations";
   static GET_CONVERSATION_BY_USERS_ID = "/get-conversation-by-users-id";
   static GET_CONVERSATION_BY_ID = "/conversation/:conversationId";
+  static GET_CONVERSATION_MEDIA = "/conversation/media";
+  static GET_CONVERSATION_FILES = "/conversation/files";
+  static GET_CONVERSATION_LINKS = "/conversation/links";
   static GET_MESSAGE = "/get-message";
   static GET_MESSAGES = "/get-messages";
   static CREATE = "/create";
