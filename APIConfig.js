@@ -61,6 +61,7 @@ export class MESSAGE_PATH {
   static CREATE = "/create";
   static GET = "/get";
   static DELETE = "/delete";
+  static SEARCH = "/search";
 }
 
 export class UTIL_PATH {
