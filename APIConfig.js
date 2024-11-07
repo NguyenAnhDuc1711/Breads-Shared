@@ -58,6 +58,7 @@ export class MESSAGE_PATH {
   static GET_CONVERSATION_LINKS = "/conversation/links";
   static GET_MESSAGE = "/get-message";
   static GET_MESSAGES = "/get-messages";
+  static GET_MSGS_BY_SEARCH = "/get-msgs-by-search";
   static CREATE = "/create";
   static GET = "/get";
   static DELETE = "/delete";
