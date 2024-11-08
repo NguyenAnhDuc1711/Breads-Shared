@@ -14,6 +14,7 @@ export class Constants {
     REPLY: "reply",
     TAG: "tag",
     REPOST: "repost",
+    LIKE: "like",
   };
 }
 

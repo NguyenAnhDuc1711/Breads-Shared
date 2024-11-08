@@ -47,6 +47,7 @@ export class NOTIFICATION_PATH {
   static GET = "/get";
   static CREATE = "/create";
   static READ = "/read";
+  static GET_NEW = "/get-new";
 }
 
 export class MESSAGE_PATH {
