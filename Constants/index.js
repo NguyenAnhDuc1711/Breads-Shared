@@ -16,6 +16,13 @@ export class Constants {
     REPOST: "repost",
     LIKE: "like",
   };
+  static MSG_ACTION = {
+    SEND: "send",
+    REPLY: "reply",
+    REACT: "react",
+    SEND_NEXT: "send next",
+    RETRIEVE: "retrieve",
+  };
 }
 
 export const gif = [

@@ -64,6 +64,8 @@ export class MESSAGE_PATH {
   static GET = "/get";
   static DELETE = "/delete";
   static SEARCH = "/search";
+  static REACT = "/react";
+  static UPDATE_MSG = "/update-msg";
 }
 
 export class UTIL_PATH {
