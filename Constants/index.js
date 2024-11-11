@@ -67,3 +67,20 @@ export const gif = [
   "https://i.giphy.com/9M5jK4GXmD5o1irGrF.webp",
   "https://i.giphy.com/MDJ9IbxxvDUQM.webp",
 ];
+
+export const fileTypes = {
+  word: [
+    "application/msword",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  ],
+  excel: [
+    "application/vnd.ms-excel",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  ],
+  powerpoint: [
+    "application/vnd.ms-powerpoint",
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  ],
+  text: ["text/plain"],
+  pdf: ["application/pdf"],
+};
