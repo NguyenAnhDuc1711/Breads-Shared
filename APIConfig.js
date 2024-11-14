@@ -66,6 +66,7 @@ export class MESSAGE_PATH {
   static SEARCH = "/search";
   static REACT = "/react";
   static UPDATE_MSG = "/update-msg";
+  static CONFIG_CONVERSATION = "/config-conversation";
 }
 
 export class UTIL_PATH {
