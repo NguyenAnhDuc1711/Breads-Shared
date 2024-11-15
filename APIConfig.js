@@ -67,6 +67,7 @@ export class MESSAGE_PATH {
   static REACT = "/react";
   static UPDATE_MSG = "/update-msg";
   static CONFIG_CONVERSATION = "/config-conversation";
+  static RETRIEVE = "/retrieve";
 }
 
 export class UTIL_PATH {
