@@ -23,6 +23,12 @@ export class Constants {
     SEND_NEXT: "send next",
     RETRIEVE: "retrieve",
   };
+  static MSG_TYPE = {
+    TEXT: "text",
+    MEDIA: "media",
+    FILE: "file",
+    SETTING: "setting",
+  };
 }
 
 export const gif = [
