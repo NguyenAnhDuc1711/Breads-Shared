@@ -68,6 +68,8 @@ export class MESSAGE_PATH {
   static UPDATE_MSG = "/update-msg";
   static CONFIG_CONVERSATION = "/config-conversation";
   static RETRIEVE = "/retrieve";
+  static FAKE_CONVERSATIONS = "/fake-conversations";
+  static FAKE_CONVERSATIONS_MSGS = "/fake-conversations-msgs";
 }
 
 export class UTIL_PATH {
