@@ -8,7 +8,6 @@ export class Route {
 }
 
 export class USER_PATH {
-  //User
   static GET_ALL = "/all";
   static ADMIN = "/admin";
   static PROFILE = "/profile/";
@@ -70,6 +69,7 @@ export class MESSAGE_PATH {
   static RETRIEVE = "/retrieve";
   static FAKE_CONVERSATIONS = "/fake-conversations";
   static FAKE_CONVERSATIONS_MSGS = "/fake-conversations-msgs";
+  static SEEN_MSGS = "/seen-msgs";
 }
 
 export class UTIL_PATH {
