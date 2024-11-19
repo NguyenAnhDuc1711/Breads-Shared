@@ -24,7 +24,7 @@ class PageConstant {
   static FOLLOWS = "follows";
   static REPLIES = "replies";
   static MENTIONS = "mentions";
-  static QUOTES = "quotes";
+  static LIKES = "likes";
   static REPOSTS = "reposts";
   static POST_DETAIL = "post_detail";
   static CHAT = "chat";
