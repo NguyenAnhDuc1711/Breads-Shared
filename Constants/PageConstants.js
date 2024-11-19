@@ -1,4 +1,5 @@
 class PageConstant {
+  static ALL = "";
   static AUTH = "auth";
   static LOGIN = "login";
   static SIGNUP = "signup";
