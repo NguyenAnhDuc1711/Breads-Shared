@@ -74,4 +74,5 @@ export class MESSAGE_PATH {
 
 export class UTIL_PATH {
   static UPLOAD = "/upload";
+  static SEND_FORGOT_PW_MAIL = "/send-forgot-pw-mail";
 }

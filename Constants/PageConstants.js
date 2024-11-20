@@ -2,6 +2,7 @@ class PageConstant {
   static AUTH = "auth";
   static LOGIN = "login";
   static SIGNUP = "signup";
+  static RESET_PW = "reset_pw";
   static HOME = "home";
   static SEARCH = "search";
   static PROFILE = "profile";
