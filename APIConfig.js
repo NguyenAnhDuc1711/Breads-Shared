@@ -24,6 +24,8 @@ export class USER_PATH {
   static USERS_TO_TAG = "/users-to-tag";
   static CONNECT = "/connect";
   static UPDATE_FR_ONLINE = "/update-fr-onl";
+  static CHECK_VALID_USER = "/check-valid-user";
+  static GET_USER_ID_FROM_EMAIL = "/get-user-id-from-email";
 }
 
 export class POST_PATH {
