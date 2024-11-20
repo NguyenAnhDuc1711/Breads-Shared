@@ -1,4 +1,5 @@
 class PageConstant {
+  static ALL = "";
   static AUTH = "auth";
   static LOGIN = "login";
   static SIGNUP = "signup";
@@ -25,7 +26,7 @@ class PageConstant {
   static FOLLOWS = "follows";
   static REPLIES = "replies";
   static MENTIONS = "mentions";
-  static QUOTES = "quotes";
+  static LIKES = "likes";
   static REPOSTS = "reposts";
   static POST_DETAIL = "post_detail";
   static CHAT = "chat";
