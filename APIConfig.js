@@ -72,6 +72,7 @@ export class MESSAGE_PATH {
   static FAKE_CONVERSATIONS = "/fake-conversations";
   static FAKE_CONVERSATIONS_MSGS = "/fake-conversations-msgs";
   static SEEN_MSGS = "/seen-msgs";
+  static SEND_NEXT = "/send-next";
 }
 
 export class UTIL_PATH {
