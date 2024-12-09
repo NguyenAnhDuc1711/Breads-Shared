@@ -30,6 +30,12 @@ class PageConstant {
   static REPOSTS = "reposts";
   static POST_DETAIL = "post_detail";
   static CHAT = "chat";
+
+  static ADMIN = {
+    DEFAULT: "admin",
+    POSTS: "admin/posts",
+    USERS: "admin/users",
+  };
 }
 
 export default PageConstant;
