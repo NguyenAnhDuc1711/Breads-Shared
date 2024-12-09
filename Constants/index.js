@@ -29,6 +29,19 @@ export class Constants {
     FILE: "file",
     SETTING: "setting",
   };
+  static POST_STATUS = {
+    PENDING: 0,
+    PUBLIC: 1,
+    ONLY_ME: 2,
+    ONLY_FOLLOWERS: 3,
+    DELETED: 4,
+  };
+  static USER_STATUS = {
+    ACTIVE: 0,
+    INACTIVE: 1,
+    LOCK: 2,
+    BANNED: 3,
+  };
 }
 
 export const gif = [
