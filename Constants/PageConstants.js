@@ -34,6 +34,7 @@ class PageConstant {
   static ADMIN = {
     DEFAULT: "admin",
     POSTS: "admin/posts",
+    POSTS_VALIDATION: "admin/posts/validation",
     USERS: "admin/users",
   };
 }
