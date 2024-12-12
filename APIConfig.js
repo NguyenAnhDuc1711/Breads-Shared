@@ -26,6 +26,7 @@ export class USER_PATH {
   static UPDATE_FR_ONLINE = "/update-fr-onl";
   static CHECK_VALID_USER = "/check-valid-user";
   static GET_USER_ID_FROM_EMAIL = "/get-user-id-from-email";
+  static GET_USERS_PENDING_POST = "/get-users-pending-post";
 }
 
 export class POST_PATH {
@@ -37,6 +38,7 @@ export class POST_PATH {
   static TICK_SURVEY = "/tick-post-survey";
   static CRAWL_POST = "/crawl-post";
   static GET_ONE = "/get-post";
+  static UPDATE_POST_STATUS = "/update-post-status";
 }
 
 export class COLLECTION_PATH {
