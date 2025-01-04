@@ -86,4 +86,5 @@ export class UTIL_PATH {
 export class ANALYTICS_PATH {
   static CREATE = "/create";
   static GET = "/get";
+  static GET_SNAPSHOT_REPORT = "/get-user-active-in-date-range";
 }
