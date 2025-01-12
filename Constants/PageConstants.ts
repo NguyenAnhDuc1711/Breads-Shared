@@ -29,7 +29,6 @@ class PageConstant {
   static LIKES = "likes";
   static REPOSTS = "reposts";
   static POST_DETAIL = "post_detail";
-  static CHAT = "chat";
 
   static ADMIN = {
     DEFAULT: "admin",

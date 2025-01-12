@@ -1,4 +1,4 @@
-export const encodedString = (input) => {
+export const encodedString = (input: string): string => {
   const key = Math.floor(Math.random() * 10);
   let encoded = "";
   for (let i = 0; i < input.length; i++) {
@@ -10,7 +10,7 @@ export const encodedString = (input) => {
   return encoded;
 };
 
-export const decodeString = (input) => {
+export const decodeString = (input: string): string => {
   let key = Number(input[input.length - 1]);
   let encoded = input.slice(0, input.length - 1);
   let decoded = "";
@@ -22,7 +22,7 @@ export const decodeString = (input) => {
   return decoded;
 };
 
-export const previewLinkKey = [
+export const previewLinkKey: string[] = [
   "f1ba2a6f15e4ba82e53067bb44ae6b60",
   "88f7dcd0ef857e78969437f80a1f78c2",
   "52f6692b2e2b5ead92037eb93d2d3632",
