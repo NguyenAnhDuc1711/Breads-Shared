@@ -38,6 +38,7 @@ class PageConstant {
     REALTIME_PAGES: "admin/realtime-pages",
     POSTS_VALIDATION: "admin/posts/validation",
     USERS: "admin/users",
+    REPORT: "admin/report",
   };
 }
 

@@ -81,6 +81,7 @@ export class MESSAGE_PATH {
 export class UTIL_PATH {
   static UPLOAD = "/upload";
   static SEND_FORGOT_PW_MAIL = "/send-forgot-pw-mail";
+  static CREATE_REPORT = "/create-rp";
 }
 
 export class ANALYTICS_PATH {
