@@ -83,6 +83,7 @@ export class UTIL_PATH {
   static UPLOAD = "/upload";
   static SEND_FORGOT_PW_MAIL = "/send-forgot-pw-mail";
   static CREATE_REPORT = "/create-rp";
+  static GET_REPORTS = "/get-reports";
 }
 
 export class ANALYTICS_PATH {
