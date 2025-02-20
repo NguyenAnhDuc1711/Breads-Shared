@@ -42,6 +42,11 @@ export class Constants {
     LOCK: 2,
     BANNED: 3,
   };
+  static REPORT_STATUS = {
+    PENDING: 0,
+    RESPONSED: 1,
+    REJECT: 2,
+  };
 }
 
 export const gif = [

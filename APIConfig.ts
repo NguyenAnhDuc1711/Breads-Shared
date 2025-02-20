@@ -6,6 +6,7 @@ export class Route {
   static MESSAGE = "/messages";
   static UTIL = "/util";
   static ANALYTICS = "/analytics";
+  static REPORT = "/reports";
 }
 
 export class USER_PATH {
@@ -82,12 +83,17 @@ export class MESSAGE_PATH {
 export class UTIL_PATH {
   static UPLOAD = "/upload";
   static SEND_FORGOT_PW_MAIL = "/send-forgot-pw-mail";
-  static CREATE_REPORT = "/create-rp";
-  static GET_REPORTS = "/get-reports";
 }
 
 export class ANALYTICS_PATH {
   static CREATE = "/create";
   static GET = "/get";
   static GET_SNAPSHOT_REPORT = "/get-user-active-in-date-range";
+}
+
+export class REPORT_PATH {
+  static CREATE = "/create";
+  static GET = "/get";
+  static RESPONSE = "/response";
+  static REJECT = "/reject";
 }
