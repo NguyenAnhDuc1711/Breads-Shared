@@ -34,3 +34,35 @@ export const previewLinkKey: string[] = [
   "2f23034142ee1013140b3e12312f7efd",
   "91a09db85e34a278909ce88d062378a7",
 ];
+
+export const listCharacter = () => {
+  const characters: string[] = [];
+  for (let i = 65; i <= 90; i++) {
+    characters.push(String.fromCharCode(i));
+  }
+  return characters;
+};
+
+export const genRandomCode = () => {
+  const characters = listCharacter();
+  let code = "";
+  for (let i = 0; i < 6; i++) {
+    let numOrCharac = Math.floor(Math.random() * 2);
+    if (numOrCharac === 0) {
+      //Code random num
+      let numChose = Math.floor(Math.random() * 10).toString();
+      code += numChose;
+    } else {
+      //Code random character
+      let upperOrlower = Math.floor(Math.random() * 2);
+      let characChose =
+        upperOrlower === 0
+          ? characters[
+              Math.floor(Math.random() * characters.length)
+            ].toLowerCase()
+          : characters[Math.floor(Math.random() * characters.length)];
+      code += characChose;
+    }
+  }
+  return code;
+};

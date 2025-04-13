@@ -30,6 +30,7 @@ export class USER_PATH {
   static GET_USER_ID_FROM_EMAIL = "/get-user-id-from-email";
   static GET_USERS_PENDING_POST = "/get-users-pending-post";
   static GET_USERS_WITH_STATUS = "/get-users-with-status";
+  static VALIDATE_USER_EMAIL = "/validate-user-email";
 }
 
 export class POST_PATH {
