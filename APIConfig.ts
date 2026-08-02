@@ -10,6 +10,7 @@ export class Route {
 }
 
 export class USER_PATH {
+  static ME = "/me";
   static GET_ALL = "/all";
   static ADMIN = "/admin";
   static PROFILE = "/profile/";
