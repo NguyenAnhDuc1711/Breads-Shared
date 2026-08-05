@@ -30,7 +30,7 @@ export class Constants {
     SETTING: "setting",
   };
   static POST_STATUS = {
-    PENDING: 0,
+    PRE_ACCEPT: 0,
     PUBLIC: 1,
     ONLY_ME: 2,
     ONLY_FOLLOWERS: 3,
