@@ -44,6 +44,7 @@ export class POST_PATH {
   static CRAWL_POST = "/crawl-post";
   static GET_ONE = "/get-post";
   static UPDATE_POST_STATUS = "/update-post-status";
+  static UPDATE_POST_VISIBILITY = "/update-post-visibility";
   static NEW_FROM_FOLLOWEE = "/new-from-followee";
 }
 
