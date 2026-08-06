@@ -29,6 +29,7 @@ export interface IPost {
   parentPost?: string;
   parentPostInfo?: IPost;
   status?: number;
+  visibility?: number;
   authorId?: string;
   authorInfo?: IUserShortInfo;
   createdAt?: Date;

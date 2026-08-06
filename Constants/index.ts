@@ -32,9 +32,12 @@ export class Constants {
   static POST_STATUS = {
     PRE_ACCEPT: 0,
     PUBLIC: 1,
-    ONLY_ME: 2,
-    ONLY_FOLLOWERS: 3,
     DELETED: 4,
+  };
+  static POST_VISIBILITY = {
+    PUBLIC: 0,
+    ONLY_FOLLOWERS: 1,
+    ONLY_ME: 2,
   };
   static USER_STATUS = {
     ACTIVE: 0,
