@@ -96,6 +96,8 @@ export const gif = [
 ];
 
 export const fileTypes = {
+  image: ["image/jpeg", "image/png", "image/gif", "image/webp"],
+  video: ["video/mp4", "video/quicktime", "video/webm"],
   word: [
     "application/msword",
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
