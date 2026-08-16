@@ -47,6 +47,7 @@ export class POST_PATH {
   static UPDATE_POST_STATUS = "/update-post-status";
   static UPDATE_POST_VISIBILITY = "/update-post-visibility";
   static NEW_FROM_FOLLOWEE = "/new-from-followee";
+  static ACTIVITIES = "/:id/activities";
 }
 
 export class COLLECTION_PATH {
