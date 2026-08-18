@@ -7,6 +7,7 @@ export class Route {
   static UTIL = "/util";
   static ANALYTICS = "/analytics";
   static REPORT = "/reports";
+  static MEDIA = "/media";
 }
 
 export class USER_PATH {
@@ -100,4 +101,11 @@ export class REPORT_PATH {
   static GET = "/get";
   static RESPONSE = "/response";
   static REJECT = "/reject";
+}
+
+// Namespace REST riêng cho media (epic presigned-media-upload, AD-1). Cố ý KHÔNG gộp vào
+// MESSAGE_PATH/POST_PATH: đây là 1 endpoint DÙNG CHUNG cho cả message lẫn post, và không lẫn với
+// path socket event (`message/create`).
+export class MEDIA_PATH {
+  static SIGN_UPLOAD = "/sign-upload";
 }
