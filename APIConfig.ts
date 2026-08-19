@@ -122,11 +122,14 @@ export class ANALYTICS_PATH {
   static GET_SNAPSHOT_REPORT = "/get-user-active-in-date-range";
 }
 
+// Task 014 (D-1): CREATE -> POST / (đúng CRUD create, nhất quán POST_PATH.CREATE/USER_PATH.SIGN_UP).
+// GET (list) -> GET / (route đã là GET, chỉ đổi path). RESPONSE/REJECT là partial update theo id ->
+// PATCH /:id/response, /:id/reject (id chuyển từ body vào path).
 export class REPORT_PATH {
-  static CREATE = "/create";
-  static GET = "/get";
-  static RESPONSE = "/response";
-  static REJECT = "/reject";
+  static CREATE = "/";
+  static GET = "/";
+  static RESPONSE = "/:id/response";
+  static REJECT = "/:id/reject";
 }
 
 // Namespace REST riêng cho media (epic presigned-media-upload, AD-1). Cố ý KHÔNG gộp vào
