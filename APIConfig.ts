@@ -41,17 +41,29 @@ export class USER_PATH {
   static REFRESH_TOKEN = "/sessions/refresh";
 }
 
+// Task 011 (D-1): CRUD -> method + `/:id` (param nằm ngay trong constant, cùng quy ước USER_PATH của
+// task 010); action không-CRUD giữ POST + danh từ tài nguyên. Constant NÀO là socket-event name
+// (không phải HTTP route) được đánh dấu rõ bên dưới và CỐ Ý giữ nguyên giá trị cũ — đổi chúng sẽ
+// đổi tên event mà không có lỗi biên dịch nào, làm Fe emit một đằng Be nghe một nẻo.
 export class POST_PATH {
-  static GET_ALL = "/all";
+  static GET_ALL = "/";
   static USER = "/user-posts";
-  static CREATE = "/create";
-  static UPDATE = "/update";
+  static CREATE = "/";
+  // GET/DELETE `/posts/:id` và GET `/posts/:id/activities` vốn đã đúng D-1, được wire literal trong
+  // `post.route.ts` từ trước (ACTIVITIES dưới đây giữ nguyên giá trị).
+  static UPDATE = "/:id";
+  /** SOCKET EVENT NAME (`socket/listeners/post.listener.ts`), KHÔNG phải HTTP route — giữ nguyên. */
   static LIKE = "/like/";
-  static TICK_SURVEY = "/tick-post-survey";
-  static CRAWL_POST = "/crawl-post";
+  /** HTTP route cho like/unlike (thay cho `LIKE + ":id"` cũ). Tách khỏi `LIKE` vì `LIKE` là tên
+   * socket event dùng chung, đổi giá trị sẽ phá luồng socket. */
+  static LIKE_TOGGLE = "/:id/like";
+  static TICK_SURVEY = "/:id/survey-ticks";
+  static CRAWL_POST = "/crawl";
+  /** SOCKET EVENT NAME (`socket/controllers/post.controller.ts` `io.emit`) — giữ nguyên. */
   static GET_ONE = "/get-post";
-  static UPDATE_POST_STATUS = "/update-post-status";
-  static UPDATE_POST_VISIBILITY = "/update-post-visibility";
+  static UPDATE_POST_STATUS = "/:id/status";
+  static UPDATE_POST_VISIBILITY = "/:id/visibility";
+  /** SOCKET EVENT NAME (`services/feed/fanout.ts` `io.emit`) — giữ nguyên. */
   static NEW_FROM_FOLLOWEE = "/new-from-followee";
   static ACTIVITIES = "/:id/activities";
 }
