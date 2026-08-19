@@ -68,15 +68,19 @@ export class POST_PATH {
   static ACTIVITIES = "/:id/activities";
 }
 
+// Task 013 (D-1): `remove` là xoá 1 quan hệ (item khỏi collection) -> DELETE, nhất quán với pattern
+// like(POST)/unlike(DELETE) đã chốt ở POST_PATH. `add` là partial update -> PATCH.
 export class COLLECTION_PATH {
-  static ADD = "/add";
-  static REMOVE = "/remove";
+  static ADD = "/:userId/items";
+  static REMOVE = "/:userId/items/:postId";
 }
 
+// Task 013 (D-1): GET (list) đổi từ POST sang GET; READ đã đúng PATCH từ trước, giữ nguyên.
 export class NOTIFICATION_PATH {
-  static GET = "/get";
+  static GET = "/";
   static CREATE = "/create";
   static READ = "/read";
+  /** SOCKET EVENT NAME (`socket/controllers/notification.controller.ts`, `socket/controllers/post.controller.ts`) — giữ nguyên. */
   static GET_NEW = "/get-new";
 }
 
@@ -110,9 +114,11 @@ export class UTIL_PATH {
   static SEND_FORGOT_PW_MAIL = "/send-forgot-pw-mail";
 }
 
+// Task 013 (D-1): CREATE đã đúng CRUD (POST); GET (list) đổi từ POST sang GET.
 export class ANALYTICS_PATH {
   static CREATE = "/create";
-  static GET = "/get";
+  static GET = "/";
+  /** SOCKET EVENT NAME (`socket/listeners/admin.listener.ts`) — giữ nguyên. */
   static GET_SNAPSHOT_REPORT = "/get-user-active-in-date-range";
 }
 
