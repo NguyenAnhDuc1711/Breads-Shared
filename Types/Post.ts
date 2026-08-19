@@ -25,7 +25,10 @@ export interface IPost {
   linksInfo?: any;
   likesCount?: number;
   likedByMe?: boolean;
+  /** Trang hiện có trong client (tự quản lý qua GET .../replies phân trang) — KHÔNG phải toàn bộ
+   * reply, dùng `repliesCount` cho tổng số thật. */
   replies?: IPost[];
+  repliesCount?: number;
   parentPost?: string;
   parentPostInfo?: IPost;
   status?: number;

@@ -66,6 +66,9 @@ export class POST_PATH {
   /** SOCKET EVENT NAME (`services/feed/fanout.ts` `io.emit`) — giữ nguyên. */
   static NEW_FROM_FOLLOWEE = "/new-from-followee";
   static ACTIVITIES = "/:id/activities";
+  // Danh sách reply của 1 post, phân trang — thay cho việc BE nhúng toàn bộ `replies` không giới
+  // hạn vào response GET /:id (post.model.ts đã bỏ field `replies` mảng nhúng).
+  static REPLIES = "/:id/replies";
 }
 
 // Task 013 (D-1): `remove` là xoá 1 quan hệ (item khỏi collection) -> DELETE, nhất quán với pattern
