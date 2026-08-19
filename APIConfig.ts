@@ -14,26 +14,31 @@ export class USER_PATH {
   static ME = "/me";
   static GET_ALL = "/all";
   static ADMIN = "/admin";
-  static PROFILE = "/profile/";
-  static USERS_TO_FOLLOW = "/users-to-follow";
-  static SIGN_UP = "/signup";
-  static LOGIN = "/login";
-  static LOGOUT = "/logout";
+  // Task 010 (D-1): param nằm ngay trong constant (thay vì nối chuỗi ":userId" ở nơi gọi) ->
+  // GET /users/:userId. Route này PHẢI được đăng ký SAU CÙNG trong nhóm GET (xem user.route.ts)
+  // để không "nuốt" các path literal 1-segment khác (/me, /admin, /follow-list, /with-status).
+  static PROFILE = "/:userId";
+  static USERS_TO_FOLLOW = "/suggestions/to-follow";
+  static SIGN_UP = "/";
+  static LOGIN = "/sessions";
+  static LOGOUT = "/sessions/logout";
   static FOLLOW = "/follow";
-  static UPDATE = "/update/";
-  static CHANGE_PW = "/change-pw/";
-  static CRAWL_USER = "/crawl-user";
-  static USERS_FOLLOW = "/users-follow";
+  // Task 010 (D-1): param nằm ngay trong constant -> PUT /users/:id. Đăng ký SAU FOLLOW trong
+  // user.route.ts để tránh "nuốt" path literal 1-segment /follow.
+  static UPDATE = "/:id";
+  static CHANGE_PW = "/:id/password";
+  static CRAWL_USER = "/crawl";
+  static USERS_FOLLOW = "/follow-list";
   static USERS_SEARCH = "/users-search";
-  static USERS_TO_TAG = "/users-to-tag";
+  static USERS_TO_TAG = "/suggestions/to-tag";
   static CONNECT = "/connect";
   static UPDATE_FR_ONLINE = "/update-fr-onl";
-  static CHECK_VALID_USER = "/check-valid-user";
-  static GET_USER_ID_FROM_EMAIL = "/get-user-id-from-email";
-  static GET_USERS_PENDING_POST = "/get-users-pending-post";
-  static GET_USERS_WITH_STATUS = "/get-users-with-status";
-  static VALIDATE_USER_EMAIL = "/validate-user-email";
-  static REFRESH_TOKEN = "/refresh-token";
+  static CHECK_VALID_USER = "/validity-checks";
+  static GET_USER_ID_FROM_EMAIL = "/id-lookup";
+  static GET_USERS_PENDING_POST = "/pending-post-lookup";
+  static GET_USERS_WITH_STATUS = "/with-status";
+  static VALIDATE_USER_EMAIL = "/email-validations";
+  static REFRESH_TOKEN = "/sessions/refresh";
 }
 
 export class POST_PATH {
