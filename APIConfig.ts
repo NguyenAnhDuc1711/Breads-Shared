@@ -82,11 +82,11 @@ export class NOTIFICATION_PATH {
 
 export class MESSAGE_PATH {
   static GET_CONVERSATIONS = "/get-conversations";
-  static GET_CONVERSATION_BY_USERS_ID = "/get-conversation-by-users-id";
-  static GET_CONVERSATION_BY_ID = "/conversation/:conversationId";
-  static GET_CONVERSATION_MEDIA = "/conversation/media";
-  static GET_CONVERSATION_FILES = "/conversation/files";
-  static GET_CONVERSATION_LINKS = "/conversation/links";
+  static GET_CONVERSATION_BY_USERS_ID = "/conversations/lookup-by-users";
+  static GET_CONVERSATION_BY_ID = "/conversations/:conversationId";
+  static GET_CONVERSATION_MEDIA = "/conversations/:conversationId/media";
+  static GET_CONVERSATION_FILES = "/conversations/:conversationId/files";
+  static GET_CONVERSATION_LINKS = "/conversations/:conversationId/links";
   static GET_MESSAGE = "/get-message";
   static GET_MESSAGES = "/get-messages";
   static GET_MSGS_BY_SEARCH = "/get-msgs-by-search";
@@ -98,8 +98,8 @@ export class MESSAGE_PATH {
   static UPDATE_MSG = "/update-msg";
   static CONFIG_CONVERSATION = "/config-conversation";
   static RETRIEVE = "/retrieve";
-  static FAKE_CONVERSATIONS = "/fake-conversations";
-  static FAKE_CONVERSATIONS_MSGS = "/fake-conversations-msgs";
+  static FAKE_CONVERSATIONS = "/conversations/seed";
+  static FAKE_CONVERSATIONS_MSGS = "/conversations/seed-messages";
   static SEEN_MSGS = "/seen-msgs";
   static UNREAD_UPDATE = "/unread-update";
   static SEND_NEXT = "/send-next";
