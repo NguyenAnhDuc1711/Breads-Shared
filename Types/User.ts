@@ -21,7 +21,6 @@ export interface IUser extends IUserShortInfo {
   collection: string[];
   links: string[];
   role: number;
-  hasNewMsg: boolean;
   hasNewNotify?: boolean;
   createdAt?: Date | string | number;
   status?: number;
