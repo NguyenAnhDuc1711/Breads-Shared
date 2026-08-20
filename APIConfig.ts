@@ -1,3 +1,9 @@
+// Mounted once at the BE's app.ts and prepended to every REST call from the
+// FE (client axios in src/config/API.ts and the SSR fetches under app/).
+// Single source of truth shared via this submodule — do not hardcode this
+// segment anywhere else.
+export const API_PREFIX = "/api/v1";
+
 export class Route {
   static USER = "/users";
   static POST = "/posts";
