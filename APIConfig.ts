@@ -4,6 +4,14 @@
 // segment anywhere else.
 export const API_PREFIX = "/api/v1";
 
+// Trần cứng tổng số record (post/user) được đưa vào sitemap, dùng chung bởi CẢ 2 endpoint
+// `sitemap-eligible` (Be, để tính `totalCount` = min(count thật, N)) VÀ `buildChunkedSitemap.ts`
+// (Fe, để dừng phân trang khi đã đủ N) — 1 nguồn duy nhất, tránh 2 bên lệch số. Lý do: ~99.99% post
+// đủ điều kiện lọc hiện có CÙNG 1 giá trị engagementScore (dữ liệu dồn cục do field này chỉ tăng
+// theo bội số 3) nên không thể giảm quy mô bằng cách nâng ngưỡng lọc — phải chặn bằng số lượng tuyệt
+// đối (trần cứng), giảm rủi ro crawl-budget (PRD R-5) thay vì tiếp tục nộp toàn bộ ~961K/874K URL.
+export const SITEMAP_MAX_RECORDS = 200_000;
+
 export class Route {
   static USER = "/users";
   static POST = "/posts";
