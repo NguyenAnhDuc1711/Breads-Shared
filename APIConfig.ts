@@ -45,6 +45,11 @@ export class USER_PATH {
   static GET_USERS_WITH_STATUS = "/with-status";
   static VALIDATE_USER_EMAIL = "/email-validations";
   static REFRESH_TOKEN = "/sessions/refresh";
+  // Task 003 (epic seo-sitemap-schema, sibling của POST_PATH.SITEMAP_ELIGIBLE ở dưới): literal
+  // 1-segment -> PHẢI đăng ký TRƯỚC `PROFILE` ("/:userId") trong user.route.ts (cùng convention đã
+  // ghi ở comment route đó), nếu không sẽ bị `/:userId` nuốt mất (Express match theo thứ tự đăng
+  // ký).
+  static SITEMAP_ELIGIBLE = "/sitemap-eligible";
 }
 
 // Task 011 (D-1): CRUD -> method + `/:id` (param nằm ngay trong constant, cùng quy ước USER_PATH của
