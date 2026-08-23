@@ -75,6 +75,11 @@ export class POST_PATH {
   // Danh sách reply của 1 post, phân trang — thay cho việc BE nhúng toàn bộ `replies` không giới
   // hạn vào response GET /:id (post.model.ts đã bỏ field `replies` mảng nhúng).
   static REPLIES = "/:id/replies";
+  // Task 002 (epic seo-sitemap-schema, AD-2): endpoint riêng cho sitemap generator, độc lập với
+  // feed `GET /` (khác semantics: public-only, không viewerId). Route literal 1-segment -> PHẢI
+  // đăng ký TRƯỚC `/:id` trong post.route.ts (cùng convention đã ghi ở comment route đó), nếu
+  // không sẽ bị `/:id` nuốt mất (Express match theo thứ tự đăng ký).
+  static SITEMAP_ELIGIBLE = "/sitemap-eligible";
 }
 
 // Task 013 (D-1): `remove` là xoá 1 quan hệ (item khỏi collection) -> DELETE, nhất quán với pattern
