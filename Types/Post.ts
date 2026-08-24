@@ -17,10 +17,10 @@ export interface IPost {
   _id?: string;
   content: string;
   media: Media[];
-  survey: ISurveyOption[];
+  survey?: ISurveyOption[];
   usersTag?: any;
   usersTagInfo?: any;
-  files: any;
+  files?: any;
   links?: any;
   linksInfo?: any;
   likesCount?: number;
