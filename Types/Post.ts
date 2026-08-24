@@ -17,10 +17,13 @@ export interface IPost {
   _id?: string;
   content: string;
   media: Media[];
-  survey: ISurveyOption[];
+  /** Optional (epic lean-api-response/T1): rỗng không phân biệt với "không có" — FE luôn default
+   * về [] qua PostResponse, nên BE được phép lược field này khỏi response khi rỗng. */
+  survey?: ISurveyOption[];
   usersTag?: any;
   usersTagInfo?: any;
-  files: any;
+  /** Optional (epic lean-api-response/T1): cùng lý do với `survey`. */
+  files?: any;
   links?: any;
   linksInfo?: any;
   likesCount?: number;
@@ -40,4 +43,13 @@ export interface IPost {
   repostNum?: number;
   share?: any;
   type?: string;
+}
+
+/** State cho post ĐANG SOẠN (compose/edit) — khác `IPost` (contract response API, có thể thiếu
+ * field optional). `survey`/`files` ở đây LUÔN là mảng/giá trị thật (khởi tạo qua `defaultPostInfo`),
+ * không phải "có thể vắng mặt" như khi đọc từ response — dùng type riêng để tránh optional-chaining
+ * thừa ở toàn bộ luồng soạn post (`PostPopup/*`). */
+export interface IPostDraft extends Omit<IPost, "survey" | "files"> {
+  survey: ISurveyOption[];
+  files: any;
 }
