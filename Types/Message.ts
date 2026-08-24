@@ -44,12 +44,12 @@ export class MessageResponse implements IMessage {
   conversationId?: string;
   sender?: any;
   content: string;
-  media: Media[];
+  media: Media[] = [];
   file?: any;
-  files: any[];
-  links: any[];
-  reacts: any[];
-  usersSeen: string[];
+  files: any[] = [];
+  links: any[] = [];
+  reacts: any[] = [];
+  usersSeen: string[] = [];
   isRetrieve?: boolean;
   respondTo?: IMessage;
   parentMsg?: string;
@@ -77,4 +77,18 @@ export class MessageResponse implements IMessage {
     this.updatedAt = input.updatedAt;
     this.icon = input.icon ?? "";
   }
+}
+
+/** State cho message ĐANG SOẠN (compose) — khác `IMessage` (response contract, có thể thiếu field
+ * optional). `content`/`files`/`media`/`icon` ở đây LUÔN có giá trị thật (khởi tạo qua
+ * `defaulMessageInfo`), không phải "có thể vắng mặt" như khi đọc từ response — cùng lý do
+ * `IPostDraft` (epic lean-api-response, Post). */
+export interface IMessageDraft extends Omit<
+  IMessage,
+  "content" | "files" | "media" | "icon"
+> {
+  content: string;
+  files: any[];
+  media: Media[];
+  icon: string;
 }
