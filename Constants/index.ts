@@ -2,6 +2,7 @@ export class Constants {
   static USER_ROLE = {
     ADMIN: 0,
     USER: 1,
+    MODERATOR: 2,
   };
   static MEDIA_TYPE = {
     GIF: "gif",
