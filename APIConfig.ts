@@ -51,6 +51,10 @@ export class USER_PATH {
   static GET_USER_ID_FROM_EMAIL = "/id-lookup";
   static GET_USERS_PENDING_POST = "/pending-post-lookup";
   static GET_USERS_WITH_STATUS = "/with-status";
+  // Admin-only: chi tiết 1 user (field nhạy cảm hơn PROFILE) và đổi role/status kèm lý do.
+  // 2-segment -> không xung đột thứ tự đăng ký với PROFILE ("/:userId", 1-segment).
+  static ADMIN_DETAIL = "/:id/admin-detail";
+  static ADMIN_ACTION = "/:id/admin-action";
   static VALIDATE_USER_EMAIL = "/email-validations";
   static REFRESH_TOKEN = "/sessions/refresh";
   // Task 003 (epic seo-sitemap-schema, sibling của POST_PATH.SITEMAP_ELIGIBLE ở dưới): literal
@@ -157,6 +161,9 @@ export class REPORT_PATH {
   static GET = "/";
   static RESPONSE = "/:id/response";
   static REJECT = "/:id/reject";
+  // Admin-only (Breads-Admin Users module): toàn bộ lịch sử report user này ĐÃ NỘP (mọi status),
+  // khác GET (hàng đợi PENDING, search theo tên) -> literal "user" đứng trước :id, không xung đột.
+  static GET_BY_USER = "/user/:id";
 }
 
 // Namespace REST riêng cho media (epic presigned-media-upload, AD-1). Cố ý KHÔNG gộp vào

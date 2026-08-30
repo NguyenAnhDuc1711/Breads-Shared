@@ -32,6 +32,8 @@ export interface IUser extends IUserShortInfo {
   hasNewNotify?: boolean;
   createdAt?: Date | string | number;
   status?: number;
+  statusReason?: string;
+  lastActiveAt?: Date | string | number;
 }
 
 const USER_ARRAY_OPTIONAL_FIELDS = [
@@ -69,6 +71,8 @@ export class UserResponse implements IUser {
   hasNewNotify?: boolean;
   createdAt?: Date | string | number;
   status?: number;
+  statusReason?: string;
+  lastActiveAt?: Date | string | number;
 
   constructor(input: UserResponseInput) {
     this._id = input._id;
@@ -88,5 +92,7 @@ export class UserResponse implements IUser {
     this.hasNewNotify = input.hasNewNotify;
     this.createdAt = input.createdAt;
     this.status = input.status;
+    this.statusReason = input.statusReason;
+    this.lastActiveAt = input.lastActiveAt;
   }
 }
