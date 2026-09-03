@@ -7,10 +7,8 @@ export interface INotificationPostDetails {
 export interface INotification {
   _id?: string;
   fromUser: string;
-  /** Optional (epic lean-api-response): mảng người nhận, default về [] qua NotificationResponse khi rỗng. */
   toUsers?: string[];
   action: string;
-  /** Optional: chỉ có khi notification gắn với 1 bài viết (like, reply, repost, tag). */
   target?: string;
   isRead?: boolean;
   createdAt?: Date | string;
@@ -23,7 +21,6 @@ export interface INotification {
         bio?: string;
         avatar: string;
       };
-  /** Optional: chỉ có khi target post có content. */
   postDetails?: INotificationPostDetails;
 }
 
@@ -32,13 +29,6 @@ const NOTIFICATION_ARRAY_OPTIONAL_FIELDS = ["toUsers"] as const;
 type NotificationResponseInput = Pick<INotification, "fromUser" | "action"> &
   Partial<Omit<INotification, "fromUser" | "action">>;
 
-/**
- * Default-init cho `INotification` — cùng vai trò với `PostResponse` và `UserResponse` (epic lean-api-response):
- * - Field required (`fromUser`, `action`) được giữ nguyên.
- * - Field mảng optional (`toUsers`) default về `[]` khi vắng mặt.
- * - `isRead` default `false` khi vắng mặt.
- * - Các field optional khác giữ `undefined`.
- */
 export class NotificationResponse implements INotification {
   _id?: string;
   fromUser: string;

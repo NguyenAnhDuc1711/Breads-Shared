@@ -15,15 +15,6 @@ export interface IConversation {
 
 type ConversationResponseInput = Partial<IConversation>;
 
-/**
- * Default-init cho `IConversation` (epic lean-api-response):
- * - Field required (`_id`, `participant`, `createdAt`, `updatedAt`) giữ nguyên.
- * - `participants` default về `[]` khi vắng mặt.
- * - `lastMsg` được bọc qua `MessageResponse` nếu có.
- * - `theme` default về `"default"`.
- * - `emoji` default về `":thumbsup:"`.
- * - `unreadCount` default về `0`.
- */
 export class ConversationResponse implements IConversation {
   _id?: string;
   participant?: any;

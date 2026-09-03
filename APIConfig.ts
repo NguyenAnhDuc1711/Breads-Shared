@@ -1,15 +1,5 @@
-// Mounted once at the BE's app.ts and prepended to every REST call from the
-// FE (client axios in src/config/API.ts and the SSR fetches under app/).
-// Single source of truth shared via this submodule — do not hardcode this
-// segment anywhere else.
 export const API_PREFIX = "/api/v1";
 
-// Trần cứng tổng số record (post/user) được đưa vào sitemap, dùng chung bởi CẢ 2 endpoint
-// `sitemap-eligible` (Be, để tính `totalCount` = min(count thật, N)) VÀ `buildChunkedSitemap.ts`
-// (Fe, để dừng phân trang khi đã đủ N) — 1 nguồn duy nhất, tránh 2 bên lệch số. Lý do: ~99.99% post
-// đủ điều kiện lọc hiện có CÙNG 1 giá trị engagementScore (dữ liệu dồn cục do field này chỉ tăng
-// theo bội số 3) nên không thể giảm quy mô bằng cách nâng ngưỡng lọc — phải chặn bằng số lượng tuyệt
-// đối (trần cứng), giảm rủi ro crawl-budget (PRD R-5) thay vì tiếp tục nộp toàn bộ ~961K/874K URL.
 export const SITEMAP_MAX_RECORDS = 200_000;
 
 export class Route {
@@ -28,17 +18,12 @@ export class USER_PATH {
   static ME = "/me";
   static GET_ALL = "/all";
   static ADMIN = "/admin";
-  // Task 010 (D-1): param nằm ngay trong constant (thay vì nối chuỗi ":userId" ở nơi gọi) ->
-  // GET /users/:userId. Route này PHẢI được đăng ký SAU CÙNG trong nhóm GET (xem user.route.ts)
-  // để không "nuốt" các path literal 1-segment khác (/me, /admin, /follow-list, /with-status).
   static PROFILE = "/:userId";
   static USERS_TO_FOLLOW = "/suggestions/to-follow";
   static SIGN_UP = "/";
   static LOGIN = "/sessions";
   static LOGOUT = "/sessions/logout";
   static FOLLOW = "/follow";
-  // Task 010 (D-1): param nằm ngay trong constant -> PUT /users/:id. Đăng ký SAU FOLLOW trong
-  // user.route.ts để tránh "nuốt" path literal 1-segment /follow.
   static UPDATE = "/:id";
   static CHANGE_PW = "/:id/password";
   static CRAWL_USER = "/crawl";
@@ -47,81 +32,45 @@ export class USER_PATH {
   static USERS_TO_TAG = "/suggestions/to-tag";
   static CONNECT = "/connect";
   static UPDATE_FR_ONLINE = "/update-fr-onl";
-  // `CHECK_VALID_USER` ("/validity-checks") và `GET_USER_ID_FROM_EMAIL` ("/id-lookup") ĐÃ XOÁ
-  // (epic access-control-hardening, bước 6): 2 endpoint công khai trả lời thẳng "email này có tài
-  // khoản không" và "email này ứng với userId nào" — nguyên liệu cho chuỗi khai thác V1. Sau khi
-  // bước 2 chuyển việc đối chiếu OTP sang server, chúng KHÔNG còn client nào gọi.
   static GET_USERS_PENDING_POST = "/pending-post-lookup";
   static GET_USERS_WITH_STATUS = "/with-status";
-  // Admin-only: chi tiết 1 user (field nhạy cảm hơn PROFILE) và đổi role/status kèm lý do.
-  // 2-segment -> không xung đột thứ tự đăng ký với PROFILE ("/:userId", 1-segment).
   static ADMIN_DETAIL = "/:id/admin-detail";
   static ADMIN_ACTION = "/:id/admin-action";
   static VALIDATE_USER_EMAIL = "/email-validations";
   static REFRESH_TOKEN = "/sessions/refresh";
-  // Luồng quên mật khẩu SERVER-SIDE (epic access-control-hardening, bước 2). Trước đây mã OTP
-  // được sinh + đối chiếu hoàn toàn ở client (`Login.tsx` / `ResetPWPage.tsx`), server không lưu
-  // và `PUT /:id/password` không hề nhận tham số `code` -> OTP không phải là một control bảo mật.
-  // 3 path dưới đây đều 2-segment nên không xung đột thứ tự đăng ký với `PROFILE` ("/:userId")
-  // hay `UPDATE` ("/:id") vốn 1-segment.
   static PW_RESET_REQUEST = "/password-reset/requests";
   static PW_RESET_VERIFY = "/password-reset/verify";
   static PW_RESET_CONFIRM = "/password-reset/confirm";
-  // Task 003 (epic seo-sitemap-schema, sibling của POST_PATH.SITEMAP_ELIGIBLE ở dưới): literal
-  // 1-segment -> PHẢI đăng ký TRƯỚC `PROFILE` ("/:userId") trong user.route.ts (cùng convention đã
-  // ghi ở comment route đó), nếu không sẽ bị `/:userId` nuốt mất (Express match theo thứ tự đăng
-  // ký).
   static SITEMAP_ELIGIBLE = "/sitemap-eligible";
 }
 
-// Task 011 (D-1): CRUD -> method + `/:id` (param nằm ngay trong constant, cùng quy ước USER_PATH của
-// task 010); action không-CRUD giữ POST + danh từ tài nguyên. Constant NÀO là socket-event name
-// (không phải HTTP route) được đánh dấu rõ bên dưới và CỐ Ý giữ nguyên giá trị cũ — đổi chúng sẽ
-// đổi tên event mà không có lỗi biên dịch nào, làm Fe emit một đằng Be nghe một nẻo.
 export class POST_PATH {
   static GET_ALL = "/";
   static USER = "/user-posts";
   static CREATE = "/";
-  // GET/DELETE `/posts/:id` và GET `/posts/:id/activities` vốn đã đúng D-1, được wire literal trong
-  // `post.route.ts` từ trước (ACTIVITIES dưới đây giữ nguyên giá trị).
   static UPDATE = "/:id";
-  /** SOCKET EVENT NAME (`socket/listeners/post.listener.ts`), KHÔNG phải HTTP route — giữ nguyên. */
   static LIKE = "/like/";
-  /** HTTP route cho like/unlike (thay cho `LIKE + ":id"` cũ). Tách khỏi `LIKE` vì `LIKE` là tên
-   * socket event dùng chung, đổi giá trị sẽ phá luồng socket. */
   static LIKE_TOGGLE = "/:id/like";
   static TICK_SURVEY = "/:id/survey-ticks";
   static CRAWL_POST = "/crawl";
-  /** SOCKET EVENT NAME (`socket/controllers/post.controller.ts` `io.emit`) — giữ nguyên. */
   static GET_ONE = "/get-post";
   static UPDATE_POST_STATUS = "/:id/status";
   static UPDATE_POST_VISIBILITY = "/:id/visibility";
-  /** SOCKET EVENT NAME (`services/feed/fanout.ts` `io.emit`) — giữ nguyên. */
   static NEW_FROM_FOLLOWEE = "/new-from-followee";
   static ACTIVITIES = "/:id/activities";
-  // Danh sách reply của 1 post, phân trang — thay cho việc BE nhúng toàn bộ `replies` không giới
-  // hạn vào response GET /:id (post.model.ts đã bỏ field `replies` mảng nhúng).
   static REPLIES = "/:id/replies";
-  // Task 002 (epic seo-sitemap-schema, AD-2): endpoint riêng cho sitemap generator, độc lập với
-  // feed `GET /` (khác semantics: public-only, không viewerId). Route literal 1-segment -> PHẢI
-  // đăng ký TRƯỚC `/:id` trong post.route.ts (cùng convention đã ghi ở comment route đó), nếu
-  // không sẽ bị `/:id` nuốt mất (Express match theo thứ tự đăng ký).
   static SITEMAP_ELIGIBLE = "/sitemap-eligible";
 }
 
-// Task 013 (D-1): `remove` là xoá 1 quan hệ (item khỏi collection) -> DELETE, nhất quán với pattern
-// like(POST)/unlike(DELETE) đã chốt ở POST_PATH. `add` là partial update -> PATCH.
 export class COLLECTION_PATH {
   static ADD = "/:userId/items";
   static REMOVE = "/:userId/items/:postId";
 }
 
-// Task 013 (D-1): GET (list) đổi từ POST sang GET; READ đã đúng PATCH từ trước, giữ nguyên.
 export class NOTIFICATION_PATH {
   static GET = "/";
   static CREATE = "/create";
   static READ = "/read";
-  /** SOCKET EVENT NAME (`socket/controllers/notification.controller.ts`, `socket/controllers/post.controller.ts`) — giữ nguyên. */
   static GET_NEW = "/get-new";
 }
 
@@ -152,34 +101,22 @@ export class MESSAGE_PATH {
 
 export class UTIL_PATH {
   static UPLOAD = "/upload";
-  // `SEND_FORGOT_PW_MAIL` ĐÃ XOÁ (epic access-control-hardening, bước 2): endpoint nhận
-  // `from`/`subject`/`url` từ body client -> mail relay. Thay bằng `USER_PATH.PW_RESET_*`.
 }
 
-// Task 013 (D-1): CREATE đã đúng CRUD (POST); GET (list) đổi từ POST sang GET.
 export class ANALYTICS_PATH {
   static CREATE = "/create";
   static GET = "/";
-  /** SOCKET EVENT NAME (`socket/listeners/admin.listener.ts`) — giữ nguyên. */
   static GET_SNAPSHOT_REPORT = "/get-user-active-in-date-range";
 }
 
-// Task 014 (D-1): CREATE -> POST / (đúng CRUD create, nhất quán POST_PATH.CREATE/USER_PATH.SIGN_UP).
-// GET (list) -> GET / (route đã là GET, chỉ đổi path). RESPONSE/REJECT là partial update theo id ->
-// PATCH /:id/response, /:id/reject (id chuyển từ body vào path).
 export class REPORT_PATH {
   static CREATE = "/";
   static GET = "/";
   static RESPONSE = "/:id/response";
   static REJECT = "/:id/reject";
-  // Admin-only (Breads-Admin Users module): toàn bộ lịch sử report user này ĐÃ NỘP (mọi status),
-  // khác GET (hàng đợi PENDING, search theo tên) -> literal "user" đứng trước :id, không xung đột.
   static GET_BY_USER = "/user/:id";
 }
 
-// Namespace REST riêng cho media (epic presigned-media-upload, AD-1). Cố ý KHÔNG gộp vào
-// MESSAGE_PATH/POST_PATH: đây là 1 endpoint DÙNG CHUNG cho cả message lẫn post, và không lẫn với
-// path socket event (`message/create`).
 export class MEDIA_PATH {
   static SIGN_UPLOAD = "/sign-upload";
 }
