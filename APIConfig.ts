@@ -47,8 +47,10 @@ export class USER_PATH {
   static USERS_TO_TAG = "/suggestions/to-tag";
   static CONNECT = "/connect";
   static UPDATE_FR_ONLINE = "/update-fr-onl";
-  static CHECK_VALID_USER = "/validity-checks";
-  static GET_USER_ID_FROM_EMAIL = "/id-lookup";
+  // `CHECK_VALID_USER` ("/validity-checks") và `GET_USER_ID_FROM_EMAIL` ("/id-lookup") ĐÃ XOÁ
+  // (epic access-control-hardening, bước 6): 2 endpoint công khai trả lời thẳng "email này có tài
+  // khoản không" và "email này ứng với userId nào" — nguyên liệu cho chuỗi khai thác V1. Sau khi
+  // bước 2 chuyển việc đối chiếu OTP sang server, chúng KHÔNG còn client nào gọi.
   static GET_USERS_PENDING_POST = "/pending-post-lookup";
   static GET_USERS_WITH_STATUS = "/with-status";
   // Admin-only: chi tiết 1 user (field nhạy cảm hơn PROFILE) và đổi role/status kèm lý do.
@@ -57,6 +59,14 @@ export class USER_PATH {
   static ADMIN_ACTION = "/:id/admin-action";
   static VALIDATE_USER_EMAIL = "/email-validations";
   static REFRESH_TOKEN = "/sessions/refresh";
+  // Luồng quên mật khẩu SERVER-SIDE (epic access-control-hardening, bước 2). Trước đây mã OTP
+  // được sinh + đối chiếu hoàn toàn ở client (`Login.tsx` / `ResetPWPage.tsx`), server không lưu
+  // và `PUT /:id/password` không hề nhận tham số `code` -> OTP không phải là một control bảo mật.
+  // 3 path dưới đây đều 2-segment nên không xung đột thứ tự đăng ký với `PROFILE` ("/:userId")
+  // hay `UPDATE` ("/:id") vốn 1-segment.
+  static PW_RESET_REQUEST = "/password-reset/requests";
+  static PW_RESET_VERIFY = "/password-reset/verify";
+  static PW_RESET_CONFIRM = "/password-reset/confirm";
   // Task 003 (epic seo-sitemap-schema, sibling của POST_PATH.SITEMAP_ELIGIBLE ở dưới): literal
   // 1-segment -> PHẢI đăng ký TRƯỚC `PROFILE` ("/:userId") trong user.route.ts (cùng convention đã
   // ghi ở comment route đó), nếu không sẽ bị `/:userId` nuốt mất (Express match theo thứ tự đăng
@@ -142,7 +152,8 @@ export class MESSAGE_PATH {
 
 export class UTIL_PATH {
   static UPLOAD = "/upload";
-  static SEND_FORGOT_PW_MAIL = "/send-forgot-pw-mail";
+  // `SEND_FORGOT_PW_MAIL` ĐÃ XOÁ (epic access-control-hardening, bước 2): endpoint nhận
+  // `from`/`subject`/`url` từ body client -> mail relay. Thay bằng `USER_PATH.PW_RESET_*`.
 }
 
 // Task 013 (D-1): CREATE đã đúng CRUD (POST); GET (list) đổi từ POST sang GET.
