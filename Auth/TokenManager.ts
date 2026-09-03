@@ -1,9 +1,3 @@
-// Framework-agnostic access-token store + single-flight refresh queue,
-// shared by every FE app against the same BE session contract (POST
-// <refreshUrl> reads the httpOnly refreshToken cookie, returns
-// { metadata: { accessToken } }). Callers own their own serverUrl/env
-// resolution (Next's process.env vs Vite's import.meta.env aren't
-// cross-compatible) and pass the resolved refreshUrl in.
 
 let accessToken: string | null = null;
 
@@ -50,11 +44,6 @@ const requestNewAccessToken = async (refreshUrl: string): Promise<string> => {
   return newToken;
 };
 
-/**
- * Single entry point to get a fresh access token. Concurrent callers
- * (multiple 401s firing at once) share the same in-flight refresh request
- * instead of each triggering their own.
- */
 export const ensureFreshAccessToken = async (
   refreshUrl: string,
 ): Promise<string> => {

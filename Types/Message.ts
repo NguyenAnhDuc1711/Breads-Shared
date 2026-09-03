@@ -30,15 +30,6 @@ const MESSAGE_ARRAY_OPTIONAL_FIELDS = [
 
 type MessageResponseInput = Partial<IMessage>;
 
-/**
- * Default-init cho `IMessage` (epic lean-api-response):
- * - Field required (`_id`, `conversationId`, `sender`, `createdAt`) giữ nguyên.
- * - Field mảng optional (`media`, `files`, `links`, `reacts`, `usersSeen`) default về `[]` khi vắng mặt.
- * - `content` default về `""` khi vắng mặt.
- * - `isRetrieve` default `false` khi vắng mặt.
- * - `icon` default `""` khi vắng mặt.
- * - `type` default `"TEXT"` khi vắng mặt.
- */
 export class MessageResponse implements IMessage {
   _id?: string;
   conversationId?: string;
@@ -79,10 +70,6 @@ export class MessageResponse implements IMessage {
   }
 }
 
-/** State cho message ĐANG SOẠN (compose) — khác `IMessage` (response contract, có thể thiếu field
- * optional). `content`/`files`/`media`/`icon` ở đây LUÔN có giá trị thật (khởi tạo qua
- * `defaulMessageInfo`), không phải "có thể vắng mặt" như khi đọc từ response — cùng lý do
- * `IPostDraft` (epic lean-api-response, Post). */
 export interface IMessageDraft extends Omit<
   IMessage,
   "content" | "files" | "media" | "icon"
