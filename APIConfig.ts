@@ -23,6 +23,7 @@ export class USER_PATH {
   static SIGN_UP = "/";
   static LOGIN = "/sessions";
   static LOGOUT = "/sessions/logout";
+  static GOOGLE_SESSION = "/sessions/google";
   static FOLLOW = "/follow";
   static UPDATE = "/:id";
   static CHANGE_PW = "/:id/password";
